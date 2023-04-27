@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label {'maven'} 
+         
         docker {
             image 'maven:3.9.0-eclipse-temurin-11'
             args '-v /root/.m2:/root/.m2'
@@ -8,6 +8,9 @@ pipeline {
     }
     options {
         skipStagesAfterUnstable()
+        agent {
+            label 'maven'
+        }
     }
     stages {
         stage('Build') {
